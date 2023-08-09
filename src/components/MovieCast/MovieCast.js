@@ -17,7 +17,8 @@ const MovieCast = () => {
             })
             .catch(() => setError(true))
             .finally(() => setLoading(false))
-    }, [movieId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <div>
