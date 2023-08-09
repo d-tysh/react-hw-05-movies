@@ -17,7 +17,7 @@ const MovieCast = () => {
             })
             .catch(() => setError(true))
             .finally(() => setLoading(false))
-    }, [])
+    }, [movieId])
 
     return (
         <div>
