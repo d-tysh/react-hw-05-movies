@@ -46,9 +46,7 @@ export const getMovieReviews = async (movieId) => {
 }
 
 export const getMoviesBySearch = async (query) => {
-    // search/movie?query=batman&include_adult=false&language=en-US&page=1
-    // return await fetch(`${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}`)
-    return await fetch(`${BASE_URL}/search/movie?query=${query}}&include_adult=false&page=1&api_key=${API_KEY}`)
+   return await fetch(`${BASE_URL}/search/movie?query=${query}}&include_adult=false&page=1&api_key=${API_KEY}`)
     .then(response => {
         if (!response.ok) {
             throw new Error(response.status, response.statusText);
