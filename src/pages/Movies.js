@@ -1,5 +1,8 @@
+import { Loader } from "components/Loader/Loader";
+import { StyledLink, StyledListItem, StyledMoviesList } from "components/MoviesList/MoviesList.styled";
+import { SearchForm } from "components/SearchForm/SearchForm";
 import { useEffect, useState } from "react";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { getMoviesBySearch } from "services/getMoviesInfo";
 
 const Movies = () => {
@@ -51,18 +54,23 @@ const Movies = () => {
 
     return (
         <>
-            <form action="submit" onSubmit={searchMovies} style={{ margin: '20px' }}>
-                <input type="text" value={query} onChange={updateSearchParams} />
-                <button style={{ cursor: "pointer" }}>Search</button>
-            </form>
-            {loading && <div>Loading...</div>}
+            <SearchForm searchMovies={searchMovies} updateSearchParams={updateSearchParams} query={query} />
+            {loading && <Loader />}
             {error && <div>Oops, something went wrong...</div>}
             {!loading && !error && movies &&
-                <ul>
-                    {movies.map(movie => <li key={movie.id}>
-                        <Link to={`/movies/${movie.id}`} state={{ from: location }}>{movie.title}</Link>
-                    </li>)}
-                </ul>
+                <StyledMoviesList>
+                    {movies.map(movie => <StyledListItem key={movie.id}>
+                        <StyledLink
+                            to={`/movies/${movie.id}`}
+                            state={{from: location}}
+                        >
+                            <img src={`https://image.tmdb.org/t/p/w300/${movie['poster_path']}`} 
+                                alt={movie.title}
+                            />
+                            <p>{movie.title}</p>
+                        </StyledLink>
+                    </StyledListItem>)}
+                </StyledMoviesList>
             }
         </>
     )

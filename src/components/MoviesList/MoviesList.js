@@ -1,26 +1,30 @@
 import { useLocation } from "react-router-dom"
-import { StyledLink } from "./MoviesList.styled"
+import { StyledLink, StyledListItem, StyledMoviesList } from "./MoviesList.styled"
+import { Loader } from "components/Loader/Loader";
 
 export const MoviesList = ({movies, loading, error}) => {
     const location = useLocation();
 
     return (
         <>
-            <h2>Trending today</h2>
-            { loading && <div>Loading...</div> }
+            <h2 style={{textAlign: 'center'}}>TRANDING TODAY</h2>
+            { loading && <Loader /> }
             { error && <div>Oops, something went wrong...</div> }
             {
-                movies && 
-                <ul>
-                    {movies.map(movie => <li key={movie.id}>
+                movies &&
+                <StyledMoviesList>
+                    {movies.map(movie => <StyledListItem key={movie.id}>
                         <StyledLink
                             to={`/movies/${movie.id}`}
                             state={{from: location}}
                         >
-                            {movie.title}
+                            <img src={`https://image.tmdb.org/t/p/w300/${movie['poster_path']}`} 
+                                alt={movie.title}
+                            />
+                            <p>{movie.title}</p>
                         </StyledLink>
-                    </li>)}
-                </ul>
+                    </StyledListItem>)}
+                </StyledMoviesList>
             }
         </>
     )

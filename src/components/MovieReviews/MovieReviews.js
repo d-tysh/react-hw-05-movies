@@ -1,3 +1,4 @@
+import { Loader } from "components/Loader/Loader";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieReviews } from "services/getMoviesInfo";
@@ -24,7 +25,7 @@ const MovieReviews = () => {
     return (
         <div>
             <h3>Rewiews</h3>
-            {loading && <div>Loading...</div>}
+            {loading && <Loader />}
             {error && <div>Oops, something went wrong...</div>}
             {!reviews.length && <p>Sorry, no reviews for this movie.</p>}
             { !loading && !error && reviews && <ul>
