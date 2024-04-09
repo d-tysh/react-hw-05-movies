@@ -33,8 +33,8 @@ const MovieCast = () => {
                     <li key={item.id} 
                         style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', cursor: 'pointer', width: '150px', textAlign: 'center', boxShadow: '2px 5px 5px 2px rgba(0,0,0,0.3)'}}
                     >
-                        <img src={item['profile_path'] ? `https://image.tmdb.org/t/p/w300/${item['profile_path']}` : `https://lightwidget.com/wp-content/uploads/localhost-file-not-found.jpg`} alt={item.name} width='100%' />
-                        <div style={{padding: '4px'}}>
+                        <img src={item['profile_path'] ? `https://image.tmdb.org/t/p/w300/${item['profile_path']}` : `https://lightwidget.com/wp-content/uploads/localhost-file-not-found.jpg`} alt={item.name} />
+                        <div style={{padding: '4px', height: '100%'}}>
                             <p>Character: {item.character}</p>
                             <p style={{fontWeight: 'bold'}}>{item.name}</p>
                         </div>
