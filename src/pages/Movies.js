@@ -60,13 +60,9 @@ const Movies = () => {
             {!loading && !error && movies &&
                 <StyledMoviesList>
                     {movies.map(movie => <StyledListItem key={movie.id}>
-                        <StyledLink
-                            to={`/movies/${movie.id}`}
-                            state={{from: location}}
+                        <StyledLink to={`/movies/${movie.id}`} state={{from: location}}
                         >
-                            <img src={`https://image.tmdb.org/t/p/w300/${movie['poster_path']}`} 
-                                alt={movie.title}
-                            />
+                            <img src={`https://image.tmdb.org/t/p/w300/${movie['poster_path']}`} alt={movie.title}/>
                             <p>{movie.title}</p>
                         </StyledLink>
                     </StyledListItem>)}

@@ -12,7 +12,6 @@ const MovieReviews = () => {
 
     useEffect(() => {
         setLoading(true);
-
         getMovieReviews(movieId)
             .then(data => {
                 setLoading(false);

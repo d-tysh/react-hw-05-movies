@@ -24,6 +24,7 @@ export const SearchFormStyled = styled.form`
         border-radius: 8px;
         padding: 0 16px;
         font-size: 20px;
+        cursor: pointer;
 
         &:hover {
             background-color: orangered;
